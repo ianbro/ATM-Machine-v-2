@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.logging.ErrorManager;
 
 import main.FileManager;
-import main.ModdedDate;
 import bank.security.AccountAddress;
 import security.Password;
+import utilities.ModdedDate;
 
 public class Checking extends Account{
 
@@ -22,7 +22,6 @@ public class Checking extends Account{
 		this.owner = owner;
 		this.transactions = new ArrayList<Transaction>();
 		this.accountNumber = new AccountAddress(owner.personNumber.get("bank"), owner.personNumber.get("customer"), AccountAddress.format(nthAccount));
-		FileManager.createTransactionstxt(this);
 	}
 	
 	public boolean readTransactions(){
@@ -34,6 +33,7 @@ public class Checking extends Account{
 			double start = transactionReader.nextDouble();
 			double diff = transactionReader.nextDouble();
 			double end = transactionReader.nextDouble();
+			transactionReader.close();
 			
 			transactions.add(new Transaction(date, start, diff, end, typee));
 			return true;

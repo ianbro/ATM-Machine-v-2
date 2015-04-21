@@ -87,12 +87,14 @@ public class Customer {
 	public void addCheckingAccount(double startingAmount, String pin){
 		Checking toAdd = new Checking(this, startingAmount, pin, this.accounts.size()+1);
 		FileManager.createAccountDir(toAdd);
+		FileManager.createTransactionstxt(toAdd);
 		this.accounts.add(toAdd);
 	}
 	
 	public void addSavingsAccount(double startingAmount, String pin){
 		Savings toAdd = new Savings(this, startingAmount, pin, this.accounts.size()+1);
 		FileManager.createAccountDir(toAdd);
+		FileManager.createTransactionstxt(toAdd);
 		this.accounts.add(toAdd);
 	}
 	
