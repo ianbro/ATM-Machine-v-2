@@ -1,5 +1,6 @@
 package bank;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public abstract class Account {
 	public AccountAddress accountNumber;
 	protected Customer owner;
 	protected ArrayList<Transaction> transactions;
+	protected File transactionsFile;
 	
 	public void withdrawal(double amount, String pin){
 		if(this.pin.toString().equals(pin)){

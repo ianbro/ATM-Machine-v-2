@@ -5,8 +5,12 @@ import java.nio.file.Path;
 
 public class ErrorManager {
 	
-	public static void throwFileError(File notFound){
+	public static void throwFileNotFoundError(File notFound){
 		System.out.println("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[2]);
+	}
+	
+	public static String FileNotFoundMessage(File notFound){
+		return ("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[2]);
 	}
 	
 	public static void throwFileAlreadyExists(Path exists){

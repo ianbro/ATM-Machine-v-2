@@ -2,6 +2,7 @@ package bank;
 
 import java.util.ArrayList;
 
+import main.FileManager;
 import bank.security.AccountAddress;
 import security.Password;
 
@@ -13,6 +14,7 @@ public class Savings extends Account{
 		this.owner = owner;
 		this.transactions = new ArrayList<Transaction>();
 		this.accountNumber = new AccountAddress(owner.personNumber.get("bank"), owner.personNumber.get("customer"), AccountAddress.format(nthAccount));
+		FileManager.createTransactionstxt(this);
 	}
 	
 	public String toString(){

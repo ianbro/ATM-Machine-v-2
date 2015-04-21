@@ -146,7 +146,7 @@ public class Customer {
 		try {
 			accountsReader = new Scanner(accountsFile).useDelimiter("[,|:|\n|\r]+");
 		} catch (FileNotFoundException e) {
-			ErrorManager.throwFileError(accountsFile);
+			ErrorManager.throwFileNotFoundError(accountsFile);
 		}
 		
 		while(accountsReader.hasNext()){
@@ -181,7 +181,7 @@ public class Customer {
 		try {
 			accountsWriter = new PrintWriter(accountsFile);
 		} catch (FileNotFoundException e) {
-			ErrorManager.throwFileError(accountsFile);
+			ErrorManager.throwFileNotFoundError(accountsFile);
 		}
 		for(int i = 0; i < accounts.size(); i ++){
 			accountsWriter.println(accounts.get(i).toString());

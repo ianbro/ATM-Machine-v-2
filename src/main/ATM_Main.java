@@ -94,7 +94,7 @@ public class ATM_Main extends Application {
 		try {
 			banksWriter = new PrintWriter(banksFile);
 		} catch (FileNotFoundException e) {
-			ErrorManager.throwFileError(banksFile);
+			ErrorManager.throwFileNotFoundError(banksFile);
 		}
 		for(Bank i : banks){
 			i.printCustomers();
@@ -114,7 +114,7 @@ public class ATM_Main extends Application {
 		try {
 			banksReader = new Scanner(banksFile).useDelimiter("[<|>|\n|\r]+");
 		} catch (FileNotFoundException e) {
-			ErrorManager.throwFileError(banksFile);
+			ErrorManager.throwFileNotFoundError(banksFile);
 		}
 		while(banksReader.hasNext()){
 			readNextBank();

@@ -1,7 +1,8 @@
 package bank;
 
 import java.util.ArrayList;
-import java.util.Date;
+
+import main.ModdedDate;
 
 public class Transaction{
 
@@ -9,7 +10,7 @@ public class Transaction{
 	public double endAmount;
 	public String type;
 	public double diff;
-	private Date transDate;
+	private ModdedDate transDate;
 	
 	public Transaction(double start, double end, String typee){
 		this.startAmount = start;
@@ -21,52 +22,24 @@ public class Transaction{
 		else if(this.type.equals("deposit")){
 			this.diff = this.endAmount-this.startAmount;
 		}
-		this.transDate = new Date();
+		this.transDate = new ModdedDate();
 	}
 	
+	public Transaction(ModdedDate date, double start, double diff, double end, String typee){
+		this.startAmount = start;
+		this.endAmount = end;
+		this.diff = diff;
+		this.type = typee;
+		this.transDate = date;
+	}
+	
+	//type,date,start,difference,end
 	public String toString(){
-		String date = this.month() + "/" + this.date() + "/" + this.year();
-		String retVal = this.type + "::<" + date + "><" + this.startAmount + "><" + this.diff + "><" + this.endAmount + ">";
+		String retVal = this.type + "::<" + transDate + "><" + this.startAmount + "><" + this.diff + "><" + this.endAmount + ">";
 		return retVal;
-	}
-	
-	public int month(){
-		return this.transDate.getMonth();
-	}
-	
-	public int date(){
-		return this.transDate.getDate();
-	}
-	
-	public int year(){
-		return this.transDate.getYear();
 	}
 
 	public int compareTo(Transaction other) {
-		if(other.year() == this.year()){
-			if(other.month() == this.year()){
-				if(other.date() == this.date()){
-					return 0;
-				}
-				else if(other.date() < this.date()){
-					return 1;
-				}
-				else{
-					return -1;
-				}
-			}
-			else if(other.month() < this.month()){
-				return 1;
-			}
-			else{
-				return -1;
-			}
-		}
-		else if(other.year() < this.year()){
-			return 1;
-		}
-		else{
-			return -1;
-		}
+		return transDate.compareTo(other.transDate);
 	}
 }
