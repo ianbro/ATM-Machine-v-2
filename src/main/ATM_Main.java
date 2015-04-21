@@ -39,14 +39,18 @@ public class ATM_Main extends Application {
 	}
 	
 	public static void main(String[] args){
-		launch(args);
+//		launch(args);
+//		readBanks();
+//		log();
+//		System.out.println(banks.get());
+//		printBanks();
 	}
 	
 	public static void log(){
 		for(Bank b : banks){
-			System.out.print(b+"\n\r\t"+b.customers);
+			System.out.print(b+"\n\t"+b.customers);
 			for(Customer c : b.customers){
-				System.out.println("\n\r\t\t"+c.accounts);
+				System.out.println("\n\t\t"+c.accounts);
 			}
 			System.out.println(" ");
 		}
@@ -138,9 +142,9 @@ public class ATM_Main extends Application {
 	
 	public static void testReadWrite(){
 		createBank("______");
-		get("000").createNewCustomer("___", "__ __", "(___)-___-____", "_____", "_____");
-		get("000").get("000").addCheckingAccount(0.0, "____");
-		System.out.println(getAccount(new AccountAddress("000", "000", "000")));
+		get("002").createNewCustomer("___", "__ __", "(___)-___-____", "_____", "_____");
+		get("002").get("001").addCheckingAccount(0.0, "____");
+		System.out.println(getAccount(new AccountAddress("002", "001", "001")));
 	}
 	
 	public static Account searchAccountByNumber(String b, String c, String a){

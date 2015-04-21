@@ -91,10 +91,22 @@ public class Customer {
 		this.accounts.add(toAdd);
 	}
 	
+	public void readCheckingAccount(double startingAmount, String pin){
+		Checking toAdd = new Checking(this, startingAmount, pin, this.accounts.size()+1);
+		FileManager.createAccountDir(toAdd);
+		this.accounts.add(toAdd);
+	}
+	
 	public void addSavingsAccount(double startingAmount, String pin){
 		Savings toAdd = new Savings(this, startingAmount, pin, this.accounts.size()+1);
 		FileManager.createAccountDir(toAdd);
 		FileManager.createTransactionstxt(toAdd);
+		this.accounts.add(toAdd);
+	}
+	
+	public void readSavingsAccount(double startingAmount, String pin){
+		Savings toAdd = new Savings(this, startingAmount, pin, this.accounts.size()+1);
+		FileManager.createAccountDir(toAdd);
 		this.accounts.add(toAdd);
 	}
 	
@@ -162,14 +174,15 @@ public class Customer {
 		double startAmount = 0;
 		String pin = null;
 		if(accountType.equals("Checking")){
-			@SuppressWarnings("unused")
 			String notUsed = accountsReader.next();
 			startAmount = accountsReader.nextDouble();
 			pin = accountsReader.next();
-			this.addCheckingAccount(startAmount, pin);
+			this.readCheckingAccount(startAmount, pin);
 		}
 		else if(accountType.equals("Savings:")){
-			this.addCheckingAccount(startAmount, pin);
+			String notUsed = accountsReader.next();
+			startAmount = accountsReader.nextDouble();
+			this.readSavingsAccount(startAmount, pin);
 		}
 	}
 	

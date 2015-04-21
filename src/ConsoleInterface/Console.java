@@ -158,7 +158,7 @@ public abstract class Console {
 	}
 	
 	public static void showAccountSettingsMenu(){
-		System.out.println("Please choose an option:\n	Change Password\n	Change Account Pin\n	Change Contact Info");
+		System.out.println("Please choose an option:\n	Change Password\n	Change Account Pin\n	Change User Name\n	Change Contact Info");
 		kbReader = new Scanner(System.in);
 		String choice;
 		try {
@@ -171,6 +171,7 @@ public abstract class Console {
 				promptPinChange();
 				break;
 			case "Change User Name":
+				promptUserNameChange();
 				break;
 			case "Change Contact Info":
 				break;
@@ -180,6 +181,19 @@ public abstract class Console {
 			}
 		} catch (StringIndexOutOfBoundsException s){
 			System.out.println("Please enter a choice.");
+		}
+	}
+	
+	public static void promptUserNameChange(){
+		System.out.println("New User Name:");
+		kbReader = new Scanner(System.in);
+		String toChange = kbReader.nextLine();
+		if(toChange.contains(" ")){
+			System.out.println("Sorry, User Name cannot contain spaces or commas.");
+		}
+		else {
+			ATM_Main.activeBank.activeCustomer.userName = toChange;
+			System.out.println("User Name set to " + ATM_Main.activeBank.activeCustomer.userName);
 		}
 	}
 	

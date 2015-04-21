@@ -6,18 +6,18 @@ import java.nio.file.Path;
 public class ErrorManager {
 	
 	public static void throwFileNotFoundError(File notFound){
-		System.out.println("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[2]);
+		System.out.println("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[3]);
 	}
 	
 	public static String FileNotFoundMessage(File notFound){
-		return ("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[2]);
+		return ("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[3]);
 	}
 	
 	public static void throwFileAlreadyExists(Path exists){
-		System.out.println("File: " + exists.toString() + " already exists. " + Thread.currentThread().getStackTrace()[2]);
+		System.out.println("File: " + exists.toString() + " already exists. " + Thread.currentThread().getStackTrace()[3]);
 	}
 	
 	public static void throwFileDeletionError(Path notFound){
-		System.out.println("File: " + notFound.toString() + " not found or deleted. " + Thread.currentThread().getStackTrace()[2]);
+		System.out.println("File: " + notFound.toString() + " not found or deleted. " + Thread.currentThread().getStackTrace()[3]);
 	}
 }

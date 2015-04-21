@@ -3,6 +3,7 @@ package main;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -34,8 +35,12 @@ public abstract class FileManager {
 		Path transactionPath = Paths.get("/banks/" + target.accountNumber.get("bank") + "/" + target.accountNumber.personNumToString() + "/" + target.accountNumber + "/" + "transactions.txt");
 		try {
 			Files.createFile(transactionPath);
+		} catch (NoSuchFileException e) {
+//			ErrorManager.throwFileAlreadyExists(transactionPath);
+			e.printStackTrace();
 		} catch (IOException e) {
-			ErrorManager.throwFileAlreadyExists(transactionPath);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
