@@ -44,8 +44,19 @@ public abstract class Account {
 		return balFormat.format(this.balance);
 	}
 	
-	public void setPin(String pin){
-		this.pin = new Password(pin);
+	public Object[] setPin(String old, String pin, String confirm){
+		if(old.equals(this.pin.toString())){
+			if(pin.equals(confirm)){
+				this.pin = new Password(pin);
+				return new Object[]{true, "Pin set to " + this.pin};
+			}
+			else{
+				return new Object[]{false, "Sorry, the new pin and the confirmation pin must be the same."};
+			}
+		}
+		else{
+			return new Object[]{false, "Sorry, that is not the correct pin."};
+		}
 	}
 	
 	public Customer getOwner(){

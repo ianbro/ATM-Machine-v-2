@@ -158,7 +158,7 @@ public abstract class Console {
 	}
 	
 	public static void showAccountSettingsMenu(){
-		System.out.println("Please choose an option:\n	Change Password\n	Change Account pin\n	Change Contact Info");
+		System.out.println("Please choose an option:\n	Change Password\n	Change Account Pin\n	Change Contact Info");
 		kbReader = new Scanner(System.in);
 		String choice;
 		try {
@@ -167,7 +167,8 @@ public abstract class Console {
 			case "Change Password":
 				promptPasswordChange();
 				break;
-			case "Change Pin For An Account":
+			case "Change Account Pin":
+				promptPinChange();
 				break;
 			case "Change User Name":
 				break;
@@ -180,6 +181,37 @@ public abstract class Console {
 		} catch (StringIndexOutOfBoundsException s){
 			System.out.println("Please enter a choice.");
 		}
+	}
+	
+	public static void promptPinChange(){
+		System.out.println("Please enter the address to the account:");
+		kbReader = new Scanner(System.in).useDelimiter("[.|\n|\r]+");
+		Account target = null;
+		try{
+			target = ATM_Main.searchAccountByNumber(kbReader.next(), kbReader.next(), kbReader.next());
+		} catch(Exception e){
+			System.out.println("Sorry, please enter the address in form '###.###.###'\nagain?");
+			kbReader = new Scanner(System.in);
+			if(kbReader.next().equalsIgnoreCase("yes")){
+				promptPinChange();
+			} else {
+				return;
+			}
+		}
+			
+		System.out.println("Origional pin:");
+		kbReader = new Scanner(System.in);
+		String o = kbReader.next();
+		
+		System.out.println("New:");
+		kbReader = new Scanner(System.in);
+		String n = kbReader.next();
+		
+		System.out.println("Confirm:");
+		kbReader = new Scanner(System.in);
+		String c = kbReader.next();
+		
+		System.out.println(target.setPin(o, n, c)[1]);
 	}
 	
 	public static void promptPasswordChange(){
