@@ -1,0 +1,39 @@
+All Views:
+	•Accounts
+	•Transfer
+	•Logout
+	•Account Settings(Customer account)
+
+Accounts View:
+	•Show accounts
+	•Inside accounts:
+		oInfo about current account
+		oTransaction history
+		oWithdrawal/Deposit
+			-Amount
+			-Pin(if withdrawal)
+
+Transfer View:
+	•Transfer form:
+		oAmount
+		oTarget
+		oYou’re pin
+
+Logout:
+	•Just a button
+
+Account Settings:
+	•Change Password
+		oOld
+		oNew
+		oConfirm new
+	•Change a pin for an account
+		oOld
+		oNew 
+		oConfirm new
+	•Change User Name
+		oNew
+	•Edit Contact Information
+		oPhone number
+		oHouse address
+		oName

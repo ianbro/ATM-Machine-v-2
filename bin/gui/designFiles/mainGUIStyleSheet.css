@@ -1,0 +1,16 @@
+BorderPane {
+	-fx-background-color: white;
+}
+
+#head {
+	-fx-background-color: black;
+	-fx-pref-height: 50px;
+}
+
+#mainDisplay {
+	-fx-background-color: white;
+}
+
+#left {
+	-fx-background-color: black;
+}
