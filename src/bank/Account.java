@@ -22,8 +22,7 @@ public abstract class Account {
 			this.balance -= amount;
 			double bal = this.balance+amount;
 			double diff = amount;
-			String type = "withdrawal";
-			this.transactions.add(new Transaction(bal, diff, type));
+			this.transactions.add(new Transaction(bal, diff));
 		}
 	}
 	
@@ -31,8 +30,7 @@ public abstract class Account {
 		this.balance += amount;
 		double bal = this.balance-amount;
 		double diff = amount;
-		String type = "deposit";
-		this.transactions.add(new Transaction(bal, diff, type));
+		this.transactions.add(new Transaction(bal, diff));
 	}
 	
 	public double getBal(){

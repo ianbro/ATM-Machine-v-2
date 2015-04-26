@@ -13,6 +13,7 @@ import java.util.Scanner;
 import bank.Account;
 import bank.Bank;
 import bank.Customer;
+import bank.Transaction;
 import bank.security.AccountAddress;
 import gui.MainGUIController;
 import javafx.application.Application;
@@ -39,11 +40,10 @@ public class ATM_Main extends Application {
 	}
 	
 	public static void main(String[] args){
-//		launch(args);
-//		readBanks();
-//		log();
-//		System.out.println(banks.get());
-//		printBanks();
+		Transaction t = new Transaction(500, 100);
+		System.out.println(t);
+		Transaction a = new Transaction(500, 9000);
+		System.out.println(a);
 	}
 	
 	public static void log(){
