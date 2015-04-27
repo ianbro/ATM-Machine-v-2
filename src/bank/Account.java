@@ -1,10 +1,13 @@
 package bank;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import main.ErrorManager;
 import bank.security.AccountAddress;
 import security.Password;
 
@@ -16,6 +19,7 @@ public abstract class Account {
 	protected Customer owner;
 	protected ArrayList<Transaction> transactions;
 	protected File transactionsFile;
+	protected PrintWriter transactionsWriter;
 	
 	public void withdrawal(double amount, String pin){
 		if(this.pin.toString().equals(pin)){
@@ -78,5 +82,18 @@ public abstract class Account {
 		else {
 			return false;
 		}
+	}
+	
+	public void printTransactions(){
+		transactionsFile = new File("src/banks/"+this.owner.personNumber.get("bank")+"/"+this.owner.personNumber.personNumToString()+"/" + this.accountNumber.toString() + "/transactions.txt");
+		try {
+			transactionsWriter = new PrintWriter(transactionsFile);
+		} catch (FileNotFoundException e) {
+			ErrorManager.throwFileNotFoundError(transactionsFile);
+		}
+		for(Transaction i: this.transactions){
+			transactionsWriter.println(i);
+		}
+		transactionsWriter.close();
 	}
 }

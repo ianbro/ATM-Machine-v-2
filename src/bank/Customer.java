@@ -199,6 +199,7 @@ public class Customer {
 			ErrorManager.throwFileNotFoundError(accountsFile);
 		}
 		for(int i = 0; i < accounts.size(); i ++){
+			this.accounts.get(i).printTransactions();
 			accountsWriter.println(accounts.get(i).toString());
 //																System.out.println(i.toString());
 		}

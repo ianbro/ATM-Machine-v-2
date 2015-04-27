@@ -52,6 +52,8 @@ public class ATM_Main extends Application {
 		bank.createNewCustomer("Ian", "Ian kkjj", "1111", "jfds", "lflksd");
 		Customer cust = bank.get("001");
 		cust.addCheckingAccount(100, "kjfslk");
+		Account acc = cust.get("001");
+		acc.deposit(100.00);
 		
 		printBanks();
 	}
