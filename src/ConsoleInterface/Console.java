@@ -158,7 +158,7 @@ public abstract class Console {
 	}
 	
 	public static void showAccountSettingsMenu(){
-		System.out.println("Please choose an option:\n	Change Password\n	Change Account Pin\n	Change User Name\n	Change Contact Info");
+		System.out.println("Please choose an option:\n	Change Password\n	Change Account Pin\n	Change User Name");
 		kbReader = new Scanner(System.in);
 		String choice;
 		try {
@@ -172,8 +172,6 @@ public abstract class Console {
 				break;
 			case "Change User Name":
 				promptUserNameChange();
-				break;
-			case "Change Contact Info":
 				break;
 			default:
 				System.out.println("Sorry, that is not an option. Try capitolizing the first letter of each word.");

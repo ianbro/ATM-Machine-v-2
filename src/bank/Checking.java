@@ -35,7 +35,7 @@ public class Checking extends Account{
 			double end = transactionReader.nextDouble();
 			transactionReader.close();
 			
-			transactions.add(new Transaction(date, start, diff, end, typee));
+			transactions.add(new Transaction(date, start, end));
 			return true;
 		} catch (FileNotFoundException e) {
 			return false;

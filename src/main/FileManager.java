@@ -32,7 +32,7 @@ public abstract class FileManager {
 	}
 	
 	public static void createTransactionstxt(Account target){
-		Path transactionPath = Paths.get("/banks/" + target.accountNumber.get("bank") + "/" + target.accountNumber.personNumToString() + "/" + target.accountNumber + "/" + "transactions.txt");
+		Path transactionPath = Paths.get("src/banks/" + target.accountNumber.get("bank") + "/" + target.accountNumber.personNumToString() + "/" + target.accountNumber + "/" + "transactions.txt");
 		try {
 			Files.createFile(transactionPath);
 		} catch (NoSuchFileException e) {

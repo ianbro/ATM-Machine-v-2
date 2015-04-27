@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import utilities.ModdedDate;
 import bank.Account;
 import bank.Bank;
 import bank.Customer;
@@ -42,8 +43,17 @@ public class ATM_Main extends Application {
 	public static void main(String[] args){
 		Transaction t = new Transaction(500, 100);
 		System.out.println(t);
-		Transaction a = new Transaction(500, 9000);
+		Transaction a = new Transaction(new ModdedDate("3/5/2020"), 500, 9000);
 		System.out.println(a);
+		System.out.println(a.compareTo(t));
+		
+		createBank("test");
+		Bank bank = get("001");
+		bank.createNewCustomer("Ian", "Ian kkjj", "1111", "jfds", "lflksd");
+		Customer cust = bank.get("001");
+		cust.addCheckingAccount(100, "kjfslk");
+		
+		printBanks();
 	}
 	
 	public static void log(){
