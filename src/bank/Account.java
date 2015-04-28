@@ -6,10 +6,12 @@ import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import main.ErrorManager;
 import bank.security.AccountAddress;
 import security.Password;
+import utilities.ModdedDate;
 
 public abstract class Account {
 
@@ -25,16 +27,14 @@ public abstract class Account {
 		if(this.pin.toString().equals(pin)){
 			this.balance -= amount;
 			double bal = this.balance+amount;
-			double diff = amount;
-			this.transactions.add(new Transaction(bal, diff));
+			this.transactions.add(new Transaction(bal, this.balance));
 		}
 	}
 	
 	public void deposit(double amount){
 		this.balance += amount;
 		double bal = this.balance-amount;
-		double diff = amount;
-		this.transactions.add(new Transaction(bal, diff));
+		this.transactions.add(new Transaction(bal, this.balance));
 	}
 	
 	public double getBal(){
@@ -88,12 +88,36 @@ public abstract class Account {
 		transactionsFile = new File("src/banks/"+this.owner.personNumber.get("bank")+"/"+this.owner.personNumber.personNumToString()+"/" + this.accountNumber.toString() + "/transactions.txt");
 		try {
 			transactionsWriter = new PrintWriter(transactionsFile);
+			for(Transaction i: this.transactions){
+				transactionsWriter.println(i);
+			}
+			transactionsWriter.close();
+			System.out.println("printing transactions");
 		} catch (FileNotFoundException e) {
 			ErrorManager.throwFileNotFoundError(transactionsFile);
 		}
-		for(Transaction i: this.transactions){
-			transactionsWriter.println(i);
+	}
+	
+	public boolean readTransactions(){
+		transactionsFile = new File("src/banks/" + this.accountNumber.get("bank") + "/" + this.accountNumber.personNumToString() + "/" + this.accountNumber + "/" + "transactions.txt");
+		try {
+			Scanner transactionReader = new Scanner(transactionsFile).useDelimiter("[::|<|>|\n|\r]+");
+			
+			while(transactionReader.hasNext()){
+				String typee = transactionReader.next();
+				ModdedDate date = new ModdedDate(transactionReader.next());
+				double start = transactionReader.nextDouble();
+				double diff = transactionReader.nextDouble();
+				double end = transactionReader.nextDouble();
+				
+				transactions.add(new Transaction(date, start, end));
+				System.out.println("reading transactions for " + this.accountNumber);
+			}
+			transactionReader.close();
+			return true;
+		} catch (FileNotFoundException e) {
+			ErrorManager.throwFileNotFoundError(transactionsFile);
+			return false;
 		}
-		transactionsWriter.close();
 	}
 }

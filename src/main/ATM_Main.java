@@ -41,21 +41,30 @@ public class ATM_Main extends Application {
 	}
 	
 	public static void main(String[] args){
-		Transaction t = new Transaction(500, 100);
-		System.out.println(t);
-		Transaction a = new Transaction(new ModdedDate("3/5/2020"), 500, 9000);
-		System.out.println(a);
-		System.out.println(a.compareTo(t));
+//		Transaction t = new Transaction(500, 100);
+//		System.out.println(t);
+//		Transaction a = new Transaction(new ModdedDate("3/5/2020"), 500, 9000);
+//		System.out.println(a);
+//		System.out.println(a.compareTo(t));
 		
-		createBank("test");
+//		createBank("test");
+//		Bank bank = get("001");
+//		bank.createNewCustomer("Ian", "Ian kkjj", "1111", "jfds", "lflksd");
+//		Customer cust = bank.get("001");
+//		cust.addCheckingAccount(100, "kjfslk");
+//		Account acc = cust.get("001");
+////		acc.deposit(50.00);
+////		acc.deposit(300.50);
+//		printBanks();
+		
+		readBanks();
 		Bank bank = get("001");
-		bank.createNewCustomer("Ian", "Ian kkjj", "1111", "jfds", "lflksd");
 		Customer cust = bank.get("001");
-		cust.addCheckingAccount(100, "kjfslk");
 		Account acc = cust.get("001");
-		acc.deposit(100.00);
-		
+		acc.deposit(50.00);
+		acc.withdrawal(90.50, "hello");
 		printBanks();
+		System.exit(0);
 	}
 	
 	public static void log(){
@@ -150,13 +159,6 @@ public class ATM_Main extends Application {
 	
 	public static Account getAccount(AccountAddress address){
 		return get(address.get("bank")).get(address.get("customer")).get(address.get("account"));
-	}
-	
-	public static void testReadWrite(){
-		createBank("______");
-		get("002").createNewCustomer("___", "__ __", "(___)-___-____", "_____", "_____");
-		get("002").get("001").addCheckingAccount(0.0, "____");
-		System.out.println(getAccount(new AccountAddress("002", "001", "001")));
 	}
 	
 	public static Account searchAccountByNumber(String b, String c, String a){

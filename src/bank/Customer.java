@@ -93,7 +93,7 @@ public class Customer {
 	
 	public void readCheckingAccount(double startingAmount, String pin){
 		Checking toAdd = new Checking(this, startingAmount, pin, this.accounts.size()+1);
-		FileManager.createAccountDir(toAdd);
+		toAdd.readTransactions();
 		this.accounts.add(toAdd);
 	}
 	
@@ -106,7 +106,7 @@ public class Customer {
 	
 	public void readSavingsAccount(double startingAmount, String pin){
 		Savings toAdd = new Savings(this, startingAmount, pin, this.accounts.size()+1);
-		FileManager.createAccountDir(toAdd);
+		toAdd.readTransactions();
 		this.accounts.add(toAdd);
 	}
 	
@@ -152,6 +152,7 @@ public class Customer {
 	public static Customer convertToCustomer(Bank parent, String username, String name, String phone, String address, String pass){
 		Customer toAdd = new Customer(parent, username, name, phone, address, pass);
 		toAdd.readAccounts();
+		System.out.println("reading customer " + toAdd.personNumber.personNumToString());
 		return toAdd;
 	}
 	
@@ -195,15 +196,15 @@ public class Customer {
 		accountsFile = new File("src/banks/"+this.personNumber.get("bank")+"/"+this.personNumber.personNumToString()+"/accounts.txt");
 		try {
 			accountsWriter = new PrintWriter(accountsFile);
+			for(Account i: this.accounts){
+				i.printTransactions();
+				accountsWriter.println(i.toString());
+			}
+			System.out.println("printing accounts");
+			accountsWriter.close();
 		} catch (FileNotFoundException e) {
 			ErrorManager.throwFileNotFoundError(accountsFile);
 		}
-		for(int i = 0; i < accounts.size(); i ++){
-			this.accounts.get(i).printTransactions();
-			accountsWriter.println(accounts.get(i).toString());
-//																System.out.println(i.toString());
-		}
-		accountsWriter.close();
 	}
 	
 	public Account get(String address){

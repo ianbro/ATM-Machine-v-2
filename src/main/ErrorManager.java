@@ -6,7 +6,7 @@ import java.nio.file.Path;
 public class ErrorManager {
 	
 	public static void throwFileNotFoundError(File notFound){
-		System.out.println("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[3]);
+		System.out.println("Could not find file: " + notFound.toString() + " " + Thread.currentThread().getStackTrace()[2]);
 	}
 	
 	public static String FileNotFoundMessage(File notFound){
