@@ -1,5 +1,6 @@
 package ConsoleInterface;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import bank.Bank;
@@ -12,7 +13,8 @@ public abstract class ConsoleMain{
 	public static Bank activeBank;
 	public static Customer activeCustomer;
 	public static boolean loggedIn = false;
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		Runtime.getRuntime().exec("cmd.exe /c start");
 		while(true){ //must press "P" to shut down machine
 			ATM_Main.readBanks();
 			loggedInLoop();

@@ -47,24 +47,24 @@ public class ATM_Main extends Application {
 //		System.out.println(a);
 //		System.out.println(a.compareTo(t));
 		
-		createBank("Ians Bank");
-		Bank bank = get("001");
-		bank.createNewCustomer("ianmann56", "Ian Kirkpatrick", "(734) 352-9580", "232 Lawson rd. Saline, MI", "saline54");
-		Customer cust = bank.get("001");
-		cust.addCheckingAccount(100, "1234");
-		Account acc = cust.get("001");
-//		acc.deposit(50.00);
-//		acc.deposit(300.50);
-		printBanks();
-		
-//		readBanks();
+//		createBank("Ians Bank");
 //		Bank bank = get("001");
+//		bank.createNewCustomer("ianmann56", "Ian Kirkpatrick", "(734) 352-9580", "232 Lawson rd. Saline, MI", "saline54");
 //		Customer cust = bank.get("001");
+//		cust.addCheckingAccount(100, "1234");
 //		Account acc = cust.get("001");
-//		acc.deposit(50.00);
-//		acc.withdrawal(90.50, "hello");
+////		acc.deposit(50.00);
+////		acc.deposit(300.50);
 //		printBanks();
-		System.exit(0);
+//		
+////		readBanks();
+////		Bank bank = get("001");
+////		Customer cust = bank.get("001");
+////		Account acc = cust.get("001");
+////		acc.deposit(50.00);
+////		acc.withdrawal(90.50, "hello");
+////		printBanks();
+		launch(args);
 	}
 	
 	public static void log(){
