@@ -120,4 +120,8 @@ public abstract class Account {
 			return false;
 		}
 	}
+	
+	public ArrayList<Transaction> getTransactions(){
+		return this.transactions;
+	}
 }

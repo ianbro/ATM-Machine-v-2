@@ -58,4 +58,8 @@ public class Transaction{
 	public int compareTo(Transaction other) {
 		return transDate.compareTo(other.transDate);
 	}
+	
+	public ModdedDate getDate(){
+		return this.transDate;
+	}
 }

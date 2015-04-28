@@ -8,6 +8,7 @@ import bank.Account;
 import bank.Bank;
 import bank.Checking;
 import bank.Customer;
+import bank.Transaction;
 import bank.security.AccountAddress;
 
 public abstract class Console {
@@ -93,14 +94,8 @@ public abstract class Console {
 		System.out.println(ATM_Main.activeBank.getName() + ": " + ATM_Main.activeBank.activeCustomer.getName());
 		System.out.println("Menu:");
 		System.out.println("Accounts (Type only the account number (000.000.000) to view it):");
-		for(int i = 0; i < ATM_Main.activeBank.activeCustomer.accounts.size(); i ++){
-			if(ConsoleMain.activeCustomer.accounts.get(i).getClass().equals(Checking.class)){
-				System.out.println("  "+(i+1)+". Checking: "+ConsoleMain.activeCustomer.accounts.get(i).accountNumber);
-			}
-			else{
-				System.out.println("  "+(i+1)+". Savings: "+ConsoleMain.activeCustomer.accounts.get(i).accountNumber);
-			}
-		}
+		showAccounts();
+		
 		System.out.println("Transfer");
 		System.out.println("Account Settings");
 		System.out.println("Logout");
@@ -108,6 +103,37 @@ public abstract class Console {
 		System.out.println("Please type the option you would like");
 		String choice = getChoice();
 		runChoice(choice);
+	}
+	
+	public static void showAccountMenu(Account a){
+		System.out.println(a.getClass().getName().substring(5) + ": " + a.accountNumber.toString());
+		showTransactions(a);
+		System.out.println("Please select an option:");
+		System.out.println("	Withdrawal\n	Deposit");
+		String choice = getChoice();
+		
+		{
+			if (choice.equals("Deposit")){
+				System.out.println("Amount:");
+				a.deposit(new Scanner(System.in).nextDouble());
+			}
+			else if (choice.equals("Withdrawal")){
+				System.out.println("Pin: ");
+				String pin = new Scanner(System.in).next();
+				System.out.println("Amount: ");
+				double amount = new Scanner(System.in).nextDouble();
+				a.withdrawal(amount, pin);
+			}
+			else{
+				System.out.println("Sorry, that is not an option.");
+			}
+		}
+	}
+	
+	public static void showTransactions(Account a){
+		for(Transaction t: a.getTransactions()){
+			System.out.println("		" + t.getDate() + "............" + t.type + "............" + " $" + t.diff + ",    Balance: $" + t.endAmount);
+		}
 	}
 	
 	public static void showAccounts(){
@@ -131,8 +157,8 @@ public abstract class Console {
 		try{
 			int i = Integer.valueOf(choice.substring(0, 3));
 			try{
-				//show account
-				System.out.println(ATM_Main.searchAccountByNumber(choice.substring(0, 3), choice.substring(4, 7), choice.substring(8, 11)));
+				Account a = ATM_Main.searchAccountByNumber(choice.substring(0, 3), choice.substring(4, 7), choice.substring(8, 11));
+				showAccountMenu(a);
 			} catch(Exception e){
 				System.out.println("Sorry, the account "+choice+" does not exist.");
 			}
