@@ -92,7 +92,6 @@ public abstract class Account {
 				transactionsWriter.println(i);
 			}
 			transactionsWriter.close();
-			System.out.println("printing transactions");
 		} catch (FileNotFoundException e) {
 			ErrorManager.throwFileNotFoundError(transactionsFile);
 		}
@@ -111,7 +110,6 @@ public abstract class Account {
 				double end = transactionReader.nextDouble();
 				
 				transactions.add(new Transaction(date, start, end));
-				System.out.println("reading transactions for " + this.accountNumber);
 			}
 			transactionReader.close();
 			return true;

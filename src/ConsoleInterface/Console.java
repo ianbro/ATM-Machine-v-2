@@ -108,6 +108,7 @@ public abstract class Console {
 	public static void showAccountMenu(Account a){
 		System.out.println(a.getClass().getName().substring(5) + ": " + a.accountNumber.toString());
 		showTransactions(a);
+		System.out.println("Balance: " + a.getBal() + "\n");
 		System.out.println("Please select an option:");
 		System.out.println("	Withdrawal\n	Deposit");
 		String choice = getChoice();
@@ -290,7 +291,6 @@ public abstract class Console {
 			return;
 		} catch (NumberFormatException n){
 			System.out.println("Sorry, Please type the address of the account in form (000.000.000).");
-			n.printStackTrace();
 			return;
 		}
 		

@@ -126,7 +126,6 @@ public class Bank {
 	public static Bank convertToBank(String name, int nthBank){
 		Bank toAdd = new Bank(name, nthBank);
 		toAdd.readCustomers();
-		System.out.println("reading bank " + toAdd.bankID.get("bank"));
 		return toAdd;
 	}
 	
@@ -169,7 +168,6 @@ public class Bank {
 				customerWriter.println(customers.get(i).toString());
 			}
 			customerWriter.close();
-			System.out.println("printing customers");
 		} catch (FileNotFoundException e) {
 			ErrorManager.throwFileNotFoundError(customerFile);
 		}

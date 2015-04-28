@@ -152,7 +152,6 @@ public class Customer {
 	public static Customer convertToCustomer(Bank parent, String username, String name, String phone, String address, String pass){
 		Customer toAdd = new Customer(parent, username, name, phone, address, pass);
 		toAdd.readAccounts();
-		System.out.println("reading customer " + toAdd.personNumber.personNumToString());
 		return toAdd;
 	}
 	
@@ -200,7 +199,6 @@ public class Customer {
 				i.printTransactions();
 				accountsWriter.println(i.toString());
 			}
-			System.out.println("printing accounts");
 			accountsWriter.close();
 		} catch (FileNotFoundException e) {
 			ErrorManager.throwFileNotFoundError(accountsFile);
