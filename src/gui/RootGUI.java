@@ -1,8 +1,11 @@
 package gui;
 
+import main.ATM_Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class RootGUI{
@@ -15,7 +18,7 @@ public class RootGUI{
 	}
 	
 	public static Scene getMainScene(){
-		Scene scene = new Scene(getRootGUI(), getHostScreenWidth(), getHostScreenHeight());
+		Scene scene = new Scene(ATM_Main.root, getHostScreenWidth(), getHostScreenHeight());
 		return scene;
 	}
 	

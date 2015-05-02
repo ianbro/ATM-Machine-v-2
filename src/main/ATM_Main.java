@@ -34,9 +34,11 @@ public class ATM_Main extends Application {
 	public static PrintWriter banksWriter;
 	public static Scanner banksReader;
 	public static Bank activeBank;
+	public static Parent root;
 	
 	@Override
 	public void start(Stage primaryStage) {
+		root = RootGUI.getRootGUI();
 		RootGUI.show(primaryStage);
 		readBanks();
 		printBanks();

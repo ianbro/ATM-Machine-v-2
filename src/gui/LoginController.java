@@ -18,8 +18,8 @@ public class LoginController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {}
 	
 	public void okPressed(){
-		String name = userNameField.getText();
+		String userName = userNameField.getText();
 		String password = userNameField.getText();
-		System.out.println(name + ", " + password);
+		System.out.println(userName + ", " + password);
 	}
 }
