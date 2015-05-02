@@ -14,7 +14,6 @@ public abstract class ConsoleMain{
 	public static Customer activeCustomer;
 	public static boolean loggedIn = false;
 	public static void main(String[] args) throws IOException {
-		Runtime.getRuntime().exec("cmd.exe /c start");
 		while(true){ //must press "P" to shut down machine
 			ATM_Main.readBanks();
 			loggedInLoop();

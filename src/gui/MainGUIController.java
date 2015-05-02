@@ -1,35 +1,45 @@
 package gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MainGUIController {
+public class MainGUIController implements Initializable{
 
-	public static void showSuperGUI(Stage primaryStage){
-		MainGUIController superGUI = new MainGUIController();
-		superGUI.createSuperGUI(primaryStage);
+	public AnchorPane head;
+	public Button btnActivity;
+	public Button btnTransfer;
+	public Button btnSettings;
+	public Button btnLogout;
+	public AnchorPane mainDisplay;
+	public ScrollPane mainScrollPane;
+	
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {}
+	
+	public void activityPressed(){
+		System.out.println("activity");
 	}
 	
-	public void createSuperGUI(Stage primaryStage){
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("designFiles/MainGUI.fxml"));
-			Scene scene = new Scene(root,getHostScreenWidth(),getHostScreenHeight());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		primaryStage.setMaximized(true);
-		primaryStage.setTitle("Ian Bank ATM");
+	public void transferPressed(){
+		System.out.println("transfer");
 	}
 	
-	public static int getHostScreenWidth(){
-		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+	public void settingsPressed(){
+		System.out.println("settings");
 	}
 	
-	public static int getHostScreenHeight(){
-		return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+	public void logoutPressed(){
+		System.out.println("logout");
 	}
 }

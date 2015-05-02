@@ -17,6 +17,7 @@ import bank.Customer;
 import bank.Transaction;
 import bank.security.AccountAddress;
 import gui.MainGUIController;
+import gui.RootGUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -35,35 +36,13 @@ public class ATM_Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		MainGUIController.showSuperGUI(primaryStage);
+		RootGUI rootGUI = new RootGUI();
+		rootGUI.show(primaryStage);
 		readBanks();
 		printBanks();
 	}
 	
 	public static void main(String[] args){
-//		Transaction t = new Transaction(500, 100);
-//		System.out.println(t);
-//		Transaction a = new Transaction(new ModdedDate("3/5/2020"), 500, 9000);
-//		System.out.println(a);
-//		System.out.println(a.compareTo(t));
-		
-//		createBank("Ians Bank");
-//		Bank bank = get("001");
-//		bank.createNewCustomer("ianmann56", "Ian Kirkpatrick", "(734) 352-9580", "232 Lawson rd. Saline, MI", "saline54");
-//		Customer cust = bank.get("001");
-//		cust.addCheckingAccount(100, "1234");
-//		Account acc = cust.get("001");
-////		acc.deposit(50.00);
-////		acc.deposit(300.50);
-//		printBanks();
-//		
-////		readBanks();
-////		Bank bank = get("001");
-////		Customer cust = bank.get("001");
-////		Account acc = cust.get("001");
-////		acc.deposit(50.00);
-////		acc.withdrawal(90.50, "hello");
-////		printBanks();
 		launch(args);
 	}
 	
