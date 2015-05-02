@@ -16,6 +16,7 @@ import bank.Bank;
 import bank.Customer;
 import bank.Transaction;
 import bank.security.AccountAddress;
+import gui.LoginPane;
 import gui.MainGUIController;
 import gui.RootGUI;
 import javafx.application.Application;
@@ -36,8 +37,7 @@ public class ATM_Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		RootGUI rootGUI = new RootGUI();
-		rootGUI.show(primaryStage);
+		RootGUI.show(primaryStage);
 		readBanks();
 		printBanks();
 	}

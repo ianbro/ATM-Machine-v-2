@@ -7,22 +7,22 @@ import javafx.stage.Stage;
 
 public class RootGUI{
 
-	public void show(Stage primaryStage){
-		primaryStage.setScene(this.getMainScene());
+	public static void show(Stage primaryStage){
+		primaryStage.setScene(getMainScene());
 		primaryStage.setMaximized(true);
 		primaryStage.setTitle("Ian's Bank ATM");
 		primaryStage.show();
 	}
 	
-	public Scene getMainScene(){
+	public static Scene getMainScene(){
 		Scene scene = new Scene(getRootGUI(), getHostScreenWidth(), getHostScreenHeight());
 		return scene;
 	}
 	
-	public Parent getRootGUI(){
+	public static Parent getRootGUI(){
 		Parent root = null;
 		try {
-			root = FXMLLoader.load(getClass().getResource("designFiles/MainGUI.fxml"));
+			root = FXMLLoader.load(RootGUI.class.getResource("designFiles/MainGUI.fxml"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
