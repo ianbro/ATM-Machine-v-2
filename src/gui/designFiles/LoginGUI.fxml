@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
    <children>
       <GridPane layoutX="40.0" layoutY="43.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
         <columnConstraints>
@@ -40,6 +39,6 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button fx:id="btnOK" layoutX="115.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="OK" AnchorPane.leftAnchor="115.0" />
+      <Button fx:id="btnOK" layoutX="115.0" layoutY="125.0" mnemonicParsing="false" onAction="#okPressed" prefHeight="25.0" prefWidth="51.0" text="OK" AnchorPane.leftAnchor="115.0" />
    </children>
 </AnchorPane>

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -12,13 +13,13 @@ import javafx.scene.layout.AnchorPane;
 public class MainGUIController implements Initializable{
 
 	public AnchorPane head;
-	public static Button btnActivity;
-	public static Button btnTransfer;
-	public static Button btnSettings;
-	public static Button btnLogout;
-	public static AnchorPane mainDisplay;
-	public static ScrollPane mainScrollPane;
-	public static Parent loginPane;
+	public Button btnActivity;
+	public Button btnTransfer;
+	public Button btnSettings;
+	public Button btnLogout;
+	public AnchorPane mainDisplay;
+	public ScrollPane mainScrollPane;
+	public Node loginPane;
 	
 	
 	
@@ -45,5 +46,10 @@ public class MainGUIController implements Initializable{
 	public void showLoginPane(){
 		loginPane = LoginPane.getDesign();
 		mainDisplay.getChildren().add(loginPane);
+		loginPane.setLayoutX(545);
+		loginPane.setLayoutY(225);
+		loginPane.setId("loginPane");
+		mainScrollPane.setFitToWidth(true);
+		mainScrollPane.setFitToHeight(true);
 	}
 }

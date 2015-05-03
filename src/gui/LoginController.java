@@ -19,7 +19,7 @@ public class LoginController implements Initializable{
 	
 	public void okPressed(){
 		String userName = userNameField.getText();
-		String password = userNameField.getText();
+		String password = passwordField.getText();
 		System.out.println(userName + ", " + password);
 	}
 }
