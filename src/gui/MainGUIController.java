@@ -8,7 +8,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 
 public class MainGUIController implements Initializable{
 
@@ -45,11 +48,16 @@ public class MainGUIController implements Initializable{
 	
 	public void showLoginPane(){
 		loginPane = LoginPane.getDesign();
-		mainDisplay.getChildren().add(loginPane);
 		loginPane.setLayoutX(545);
 		loginPane.setLayoutY(225);
 		loginPane.setId("loginPane");
 		mainScrollPane.setFitToWidth(true);
 		mainScrollPane.setFitToHeight(true);
+		mainDisplay.getChildren().add(loginPane);
+		this.setBackgroundIansBank();
+	}
+	
+	private void setBackgroundIansBank(){
+		this.mainDisplay.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("designFiles/images/iansBankBackground.png")), null, null, null, null)));
 	}
 }

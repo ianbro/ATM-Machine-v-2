@@ -1,0 +1,9 @@
+#btnOK {
+	-fx-background-color: black;
+	-fx-border-color: lightblue;
+	-fx-text-fill: white;
+}
+
+#frame {
+	-fx-background-color: null;
+}
