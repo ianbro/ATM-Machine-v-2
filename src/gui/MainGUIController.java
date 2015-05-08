@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -22,13 +23,7 @@ public class MainGUIController implements Initializable{
 	public Button btnLogout;
 	public AnchorPane mainDisplay;
 	public ScrollPane mainScrollPane;
-	public Node loginPane;
-	
-	
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-	}
+	@FXML public Node loginPane;
 	
 	public void activityPressed(){
 		System.out.println("activity");
@@ -47,17 +42,19 @@ public class MainGUIController implements Initializable{
 	}
 	
 	public void showLoginPane(){
-		loginPane = LoginPane.getDesign();
-		loginPane.setLayoutX(545);
-		loginPane.setLayoutY(225);
-		loginPane.setId("loginPane");
-		mainScrollPane.setFitToWidth(true);
-		mainScrollPane.setFitToHeight(true);
-		mainDisplay.getChildren().add(loginPane);
-		this.setBackgroundIansBank();
+		
 	}
 	
-	private void setBackgroundIansBank(){
-		this.mainDisplay.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("designFiles/images/iansBankBackground.png")), null, null, null, null)));
+	public void closeLoginPane(){
+		mainDisplay.getChildren().remove(loginPane);
+	}
+	
+	private void setBackground(String bankName){
+		this.mainDisplay.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("designFiles/images/" + bankName + "Background.png")), null, null, null, null)));
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 	}
 }

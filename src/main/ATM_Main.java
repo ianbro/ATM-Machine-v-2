@@ -1,5 +1,7 @@
 package main;
 	
+import gui.RootGUI;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,15 +12,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.naming.directory.SearchControls;
+
 import utilities.ModdedDate;
 import bank.Account;
 import bank.Bank;
 import bank.Customer;
 import bank.Transaction;
 import bank.security.AccountAddress;
-import gui.LoginPane;
-import gui.MainGUIController;
-import gui.RootGUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -38,10 +39,9 @@ public class ATM_Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
+		readBanks();
 		root = RootGUI.getRootGUI();
 		RootGUI.show(primaryStage);
-		readBanks();
-		printBanks();
 	}
 	
 	public static void main(String[] args){
@@ -148,5 +148,17 @@ public class ATM_Main extends Application {
 	
 	public static Account searchAccountByAddress(AccountAddress address){
 		return get(address.get("bank")).get(address.get("customer")).get(address.get("account"));
+	}
+	
+	public static Customer searchUserAllBanks(String userName){
+		for(Bank b: banks){
+			try{
+				AccountAddress address = Bank.search(b, userName);
+				if(address != null){
+					return Bank.getCustomerPointedTo(address);
+				}
+			} catch (ArrayIndexOutOfBoundsException e){}
+		}
+		return null;
 	}
 }
