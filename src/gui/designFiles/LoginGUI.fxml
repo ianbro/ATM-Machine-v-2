@@ -40,5 +40,6 @@
          </children>
       </GridPane>
       <Button fx:id="btnOK" layoutX="115.0" layoutY="125.0" mnemonicParsing="false" onAction="#okPressed" prefHeight="25.0" prefWidth="51.0" text="OK" AnchorPane.leftAnchor="115.0" />
+      <Label fx:id="message" alignment="CENTER" layoutX="28.0" layoutY="14.0" prefHeight="17.0" prefWidth="228.0" text="Label" textFill="RED" visible="false" AnchorPane.bottomAnchor="144.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>

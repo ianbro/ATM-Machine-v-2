@@ -3,16 +3,19 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import main.ATM_Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BorderPane;
 
 public class MainGUIController implements Initializable{
 
@@ -26,27 +29,46 @@ public class MainGUIController implements Initializable{
 	@FXML public Node loginPane;
 	
 	public void activityPressed(){
-		System.out.println("activity");
+		if(ATM_Main.activeBank != null){
+			System.out.println("activity");
+		}
+		else {
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setText("Please login first");
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setVisible(true);
+		}
 	}
 	
 	public void transferPressed(){
-		System.out.println("transfer");
+		if(ATM_Main.activeBank != null){
+			System.out.println("transfer");
+		}
+		else {
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setText("Please login first");
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setVisible(true);
+		}
 	}
 	
 	public void settingsPressed(){
-		System.out.println("settings");
+		if(ATM_Main.activeBank != null){	
+			System.out.println("settings");
+		}
+		else {
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setText("Please login first");
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setVisible(true);
+		}
 	}
 	
 	public void logoutPressed(){
-		System.out.println("logout");
-	}
-	
-	public void showLoginPane(){
-		
-	}
-	
-	public void closeLoginPane(){
-		mainDisplay.getChildren().remove(loginPane);
+		if(ATM_Main.activeBank != null){
+			System.out.println("logout");
+			ATM_Main.activeBank.activeCustomer = null;
+			ATM_Main.activeBank = null;
+			RootGUI.showLogin((BorderPane)ATM_Main.root);
+		}
+		else {
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setText("Please login first");
+			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setVisible(true);
+		}
 	}
 	
 	private void setBackground(String bankName){

@@ -7,3 +7,7 @@
 #frame {
 	-fx-background-color: null;
 }
+
+#message {
+	-fx-background-color: lightgray;
+}
