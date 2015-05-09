@@ -19,13 +19,13 @@ import javafx.scene.layout.BorderPane;
 
 public class MainGUIController implements Initializable{
 
-	public AnchorPane head;
-	public Button btnActivity;
-	public Button btnTransfer;
-	public Button btnSettings;
-	public Button btnLogout;
-	public AnchorPane mainDisplay;
-	public ScrollPane mainScrollPane;
+	@FXML public AnchorPane head;
+	@FXML public Button btnActivity;
+	@FXML public Button btnTransfer;
+	@FXML public Button btnSettings;
+	@FXML public Button btnLogout;
+	@FXML public AnchorPane mainDisplay;
+	@FXML public ScrollPane mainScrollPane;
 	@FXML public Node loginPane;
 	
 	public void activityPressed(){
@@ -69,10 +69,6 @@ public class MainGUIController implements Initializable{
 			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setText("Please login first");
 			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setVisible(true);
 		}
-	}
-	
-	private void setBackground(String bankName){
-		this.mainDisplay.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("designFiles/images/" + bankName + "Background.png")), null, null, null, null)));
 	}
 
 	@Override

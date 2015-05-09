@@ -7,7 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -43,8 +46,16 @@ public class RootGUI{
 		AnchorPane display = (AnchorPane)s.getContent();
 		display.getChildren().remove(0);
 	}
+	
+	public static void setBackground(BorderPane root, String bankName){
+		AnchorPane a = (AnchorPane)root.getChildren().get(1);
+		ScrollPane s = (ScrollPane)a.getChildren().get(0);
+		AnchorPane display = (AnchorPane)s.getContent();
+		display.setBackground(new Background(new BackgroundImage(new Image(RootGUI.class.getResourceAsStream("designFiles/images/" + bankName + "Background.png")), null, null, null, null)));
+	}
 
 	public static void showLogin(BorderPane root) {
+		setBackground(root, "iansBank");
 		AnchorPane a = (AnchorPane)root.getChildren().get(1);
 		ScrollPane s = (ScrollPane)a.getChildren().get(0);
 		AnchorPane display = (AnchorPane)s.getContent();

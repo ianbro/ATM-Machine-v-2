@@ -11,10 +11,6 @@ BorderPane {
 	-fx-background-color: white;
 }
 
-#mainDisplay {
-	-fx-background-color: white;
-}
-
 #btnActivity {
 	-fx-background-color: black;
 	-fx-text-fill: white;

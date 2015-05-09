@@ -11,17 +11,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 
 public class LoginController implements Initializable{
 
-	public TextField userNameField;
-	public PasswordField passwordField;
-	public Button btnOK;
-	public AnchorPane frame;
-	public Label message;
+	@FXML public TextField userNameField;
+	@FXML public PasswordField passwordField;
+	@FXML public Button btnOK;
+	@FXML public AnchorPane frame;
+	@FXML public Label message;
 	
 	public void okPressed(){
 		String userName = userNameField.getText();
@@ -52,8 +56,8 @@ public class LoginController implements Initializable{
 			System.out.println(ATM_Main.banks);
 			Customer c = ATM_Main.searchUserAllBanks(userName);
 			Bank b = c.parentBank;
-			ATM_Main.login(c.parentBank.getName());
-			c.parentBank.login(userName, password);
+			ATM_Main.login(b.getName());
+			b.login(userName, password);
 			if(ATM_Main.activeBank.activeCustomer != null){
 				return true;
 			}
@@ -69,9 +73,16 @@ public class LoginController implements Initializable{
 			return false;
 		}
 	}
+	
+	public static void setBackground(String bankName){
+		((ScrollPane)((AnchorPane)((BorderPane)ATM_Main.root).getChildren().get(1)).getChildren().get(0)).setBackground(new Background(new BackgroundImage(new Image(LoginController.class.getResourceAsStream("designFiles/images/" + bankName + "Background.png")), null, null, null, null)));
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+	}
+	
+	@FXML public void initialize(){
 	}
 }
