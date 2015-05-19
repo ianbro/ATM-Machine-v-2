@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import bank.security.AccountAddress;
 import main.ATM_Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,6 +32,8 @@ public class MainGUIController implements Initializable{
 	public void activityPressed(){
 		if(ATM_Main.activeBank != null){
 			System.out.println("activity");
+			showAccountHistoryPane();
+			AccountHistoryPane.showTransactions(ATM_Main.searchAccountByAddress(new AccountAddress("001", "001", "001")));
 		}
 		else {
 			((Label)(((AnchorPane)mainDisplay.getChildren().get(0)).getChildren().get(2))).setText("Please login first");
@@ -74,5 +77,12 @@ public class MainGUIController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+	}
+	
+	public void showAccountHistoryPane(){
+		AnchorPane historyPane = (AnchorPane) AccountHistoryPane.getDesign();
+		historyPane.setTranslateX(370);
+		historyPane.setTranslateY(200);
+		mainDisplay.getChildren().add(historyPane);
 	}
 }

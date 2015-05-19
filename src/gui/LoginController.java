@@ -42,7 +42,6 @@ public class LoginController implements Initializable{
 				message.setVisible(true);
 			}
 		} catch (Exception e){
-			System.out.println("wrong login");
 			userNameField.setText(null);
 			passwordField.setText(null);
 			message.setText("Sorry, could not find account: " + userName);
@@ -53,7 +52,6 @@ public class LoginController implements Initializable{
 	
 	public boolean login(String userName, String password){
 		try{
-			System.out.println(ATM_Main.banks);
 			Customer c = ATM_Main.searchUserAllBanks(userName);
 			Bank b = c.parentBank;
 			ATM_Main.login(b.getName());

@@ -24,6 +24,13 @@ public class RootGUI{
 		primaryStage.show();
 	}
 	
+	public static AnchorPane getMainDisplay(){
+		AnchorPane a = (AnchorPane)((BorderPane)ATM_Main.root).getChildren().get(1);
+		ScrollPane s = (ScrollPane)a.getChildren().get(0);
+		AnchorPane display = (AnchorPane)s.getContent();
+		return display;
+	}
+	
 	public static Scene getMainScene(){
 		Scene scene = new Scene(ATM_Main.root, getHostScreenWidth(), getHostScreenHeight());
 		return scene;
